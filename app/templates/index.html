@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous"> {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> {% endblock %}
+    <title>Snippet Generator</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <a class="navbar-brand text-light" href="#">Snippet Generator</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">About
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid h-100">
+
+        <div class="row">
+            <div class="col">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-content">
+
+                            <form action="/generateSnippet" method="POST">
+                                <div id="accordion" style="margin-bottom: 5px;">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne" style="padding: 0px;">
+                                            <h5 class="mb-0">
+                                                <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Advanced Configuration
+                                                </button>
+                                            </h5>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="prefix">Key</label>
+                                                    <input type="text" class="form-control" name="keyInput" placeholder="Enter key">
+                                                    <small id="keyHelp" class="form-text text-muted">Uniquely identifies your snippet in the JSON dictionary.</small>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="snippetDescription">Description</label>
+                                                    <input type="text" class="form-control" name="snippetDescriptionInput" placeholder="Enter description">
+                                                    <small id="descriptionHelp" class="form-text text-muted">The description used in the IntelliSense drop down.</small>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="prefix">Prefix</label>
+                                                    <input type="text" class="form-control" name="prefixInput" placeholder="Enter prefix">
+                                                    <small id="prefixHelp" class="form-text text-muted">Defines how this snippet is selected from IntelliSense and tab completion.</small>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col">
+                                                        <label for="lineEnding">Select line endings</label>
+                                                        <select class="form-control" name="lineEndingSelection">
+                                                            {% for key, value in endOfLineSequences.iteritems() %}
+                                                            <option>{{ key }}</option>
+                                                                    <!--  <dd>{{ value|e }}</dd>-->
+                                                            {% endfor %}
+                                                                    <!--<option>CR</option>
+                                                                <option>LF</option>
+                                                                <option>CRLF</option>-->
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col">
+                                                        <label for="tabSize">Select Tab Size</label>
+                                                        <select class="form-control" name="tabSizeSelection">
+                                                            {% for num in range(spacesCount) %}
+                                                            <option>{{ num + 1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="code">Enter Code</label>
+                                    <textarea class="form-control" name="codeInput" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-content">
+                                <h2>Generated Snippet</h2>
+                                <textarea class="h-100 w-100">{{ snippet }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+                crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+                crossorigin="anonymous"></script>
+</body>
+
+</html>

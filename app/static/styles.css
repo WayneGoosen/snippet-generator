@@ -1,0 +1,11 @@
+textarea {
+    min-height: 160px;
+}
+
+.card-content {
+    padding: 10px;
+}
+
+.row {
+    margin: 10px;
+}
