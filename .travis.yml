@@ -1,9 +1,11 @@
 language: python
 python:
-  - "3.6"
-# command to install dependencies
+- '3.6'
 install:
-  - pip install -r requirements.txt
-# command to run tests
+- pip install -r requirements.txt
 script:
-  - pytest 
+- pytest
+deploy:
+  provider: heroku
+  api_key:
+    secure: 3JgxPvQCjNj8E4WXzAcanYwk/Ls8Ul3pMRW2COwil3f0AL4eWJNLwdm4KKMNdKfkyZv1ZaSasuFOOhvwAx9FUUhCggbkqvNb/k9JZx/xcoiOk8EQDgjlMEudZzCFbHvIeF/UDVZs0I1UIWCARJQhQsfqXu85t2HHAxAd82fvE94oihYNwDJWVwX6gPvJ2X8wqY/uz2g2HOEs+WyzkakKliTPH82NK2f79YYglyr7Cak/U0AdeRjRYgAFjfxxDWRn3wFlJ3HKvNlP60r+aL57KuvpDV4snrtqrXIJBd8Ap1LIJlD4aML2uinadaAlPkw32FdH7yC4i5JukTPykOYvnHKTFWMLINQD3BTb8XDE+AbMMFcj6NkX9ohc4lOlCW3dle10N1vxAVmbTFNEPk/5WqxcXq8PMA5qW2Xr24bd1I7yOP5BXALk+EjrzqyxJEXXG1FqOZwtb27OxD/ZQY7OOPPoulYP7IdcgV8BJx4WvdaFUXaZ1InfZsbgxr+TBnDY52R52QQr/3NBJrxwXho5DhwMMOb8yABo5Fd7eUU7qpEuBL2QAWM5XlysMeFEt/41v9qSe2v1kG2XZ/PVZ3W6hIAbxgumIlNSzSRaqmYu/KI50IsPUKxYDUP821EjsskVamlBI6lRlbuWJkywxTKhjqLR9dIpe0Z6WOgeFjwZeYY=
