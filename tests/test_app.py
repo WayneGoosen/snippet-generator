@@ -1,5 +1,5 @@
 import unittest
-from ..app.common.GenerateSnippet import SplitContentIntoLines,EscapeDoubleQuotes \
+from app.common.GenerateSnippet import SplitContentIntoLines,EscapeDoubleQuotes \
 ,ReplaceSpacesWithTabDelimiter,AddDoubleQuotes,GenerateSnippetLines, \
 BuildSnippetBody,GenerateSnippetJson
 
@@ -11,9 +11,9 @@ class TestLineSplit(unittest.TestCase):
 		endOfLineChar = self.endOfLineSequences[endOfLineSequence]
 		content = "firstline" + str(endOfLineChar) + "secondline"
 		lines = SplitContentIntoLines(content, endOfLineChar)
-		self.assertEquals(len(lines),2)
-		self.assertEquals("firstline",lines[0])
-		self.assertEquals("secondline",lines[1])
+		self.assertEqual(len(lines),2)
+		self.assertEqual("firstline",lines[0])
+		self.assertEqual("secondline",lines[1])
 
 	def test_SplitContentIntoLines_cr(self):
 		self.coreTest("CR")
