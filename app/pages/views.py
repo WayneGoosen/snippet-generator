@@ -9,7 +9,12 @@ SPACES_COUNT = 10
 @pages_app.route('/')
 def home():
     """Doc string."""
-    return render_template('index.html', endOfLineSequences=END_OF_LINE_SEQUENCES, spacesCount=SPACES_COUNT, snippet='')
+    return render_template('home.html', code='', endOfLineSequences=END_OF_LINE_SEQUENCES, spacesCount=SPACES_COUNT, snippet='')
+
+@pages_app.route('/about')
+def about():
+    """Doc string."""
+    return render_template('about.html')
 
 @pages_app.route('/generateSnippet', methods = ['POST'])
 def generate_Snippet():
@@ -24,5 +29,5 @@ def generate_Snippet():
 
     snippet = GenerateSnippet(code, endOfLineSequence, int(tabSize), key, prefix, description)
 
-    return render_template('index.html', endOfLineSequences=END_OF_LINE_SEQUENCES, spacesCount=SPACES_COUNT, snippet=snippet)
+    return render_template('home.html', code=code, endOfLineSequences=END_OF_LINE_SEQUENCES, spacesCount=SPACES_COUNT, snippet=snippet)
 

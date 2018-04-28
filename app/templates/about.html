@@ -1,0 +1,20 @@
+{% extends "layout.html" %} {% block body %}
+<div class="container w-50 p-1">
+    <h2>About Snippet Generator</h2>
+    <span>
+        I created a <a class="text-warning" href="https://marketplace.visualstudio.com/items?itemName=WayneGoosen.polymer-1-snippets#overview">VS Code Extension for Polymer 1</a>
+        and found the process of creating the actual snippets tedious. I developed a python script to generate a snippet from code
+        I had pasted onto my clipboard. After this I thought it would be useful to share this for anyone else creating snippets
+        and I decided to create a flask web app.
+        <br><br> 
+        Please see the <a class="text-warning" href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">Creating your own snippets</a> documentation to get started.
+        <br><br> 
+        If you find any issues or have some cool additions, please contribute: <a class="text-warning" href="https://github.com/WayneGoosen/snippet-generator">Github Repo</a>
+        <br><br> 
+        *Please note I do not store your code, If security is a concern, please clone the repo and run locally.
+        <br><br> 
+        CI/CD provided by <a class="text-warning" href="https://travis-ci.org/">Travis</a> and <a class="text-warning" href="https://www.heroku.com/">Heroku</a>
+        <br><br> Build Status <img src="https://travis-ci.org/WayneGoosen/snippet-generator.svg?branch=master">
+    </span>
+</div>
+{% endblock %}

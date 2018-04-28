@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="row">
+    <div class="col">
+        <div class="card mb-4 box-shadow bg-light">
+            <div class="card-content">
+
+                <form action="/generateSnippet" method="POST">
+                    <div id="accordion" style="margin-bottom: 5px;">
+                        <div class="card">
+                            <div class="card-header" id="headingOne" style="padding: 0px;">
+                                <h5 class="mb-0">
+                                    <button type="button" class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">
+                                        Advanced Configuration
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="prefix">Key</label>
+                                        <input type="text" class="form-control" name="keyInput" placeholder="Enter key">
+                                        <small id="keyHelp" class="form-text text-muted">Uniquely identifies your snippet in the JSON dictionary.</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="snippetDescription">Description</label>
+                                        <input type="text" class="form-control" name="snippetDescriptionInput" placeholder="Enter description">
+                                        <small id="descriptionHelp" class="form-text text-muted">The description used in the IntelliSense drop down.</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="prefix">Prefix</label>
+                                        <input type="text" class="form-control" name="prefixInput" placeholder="Enter prefix">
+                                        <small id="prefixHelp" class="form-text text-muted">Defines how this snippet is selected from IntelliSense and tab completion.</small>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col">
+                                            <label for="lineEnding">Select line endings</label>
+                                            <select class="form-control" name="lineEndingSelection">
+                                                {% for key, value in endOfLineSequences.items() %}
+                                                <option>{{ key }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group col">
+                                            <label for="tabSize">Select Tab Size</label>
+                                            <select class="form-control" name="tabSizeSelection">
+                                                {% for num in range(spacesCount) %}
+                                                <option>{{ num + 1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code">Enter Code</label>
+                        <textarea class="form-control" name="codeInput" rows="3">{{ code }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary bg-dark site-font text-warning">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card box-shadow bg-light">
+            <div class="card-body">
+                <label class="card-title">Generated Snippet</label>
+                <textarea class="h-100 w-100">{{ snippet }}</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
