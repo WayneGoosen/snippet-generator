@@ -2,7 +2,7 @@
 
 This is a Python Flask web application which helps create code snippets for a Visual Studio Code Extension or your local global user snippets.   
 
-[![Build Status](https://travis-ci.org/WayneGoosen/snippet-generator.svg?branch=master)](https://travis-ci.org/WayneGoosen/snippet-generator.svg?branch=master)
+[![Build Status](https://travis-ci.org/WayneGoosen/snippet-generator.svg?branch=master)](https://travis-ci.org/WayneGoosen/snippet-generator)
 [![Coverage Status](https://coveralls.io/repos/github/WayneGoosen/snippet-generator/badge.svg)](https://coveralls.io/github/WayneGoosen/snippet-generator)
 
 ## VS Code Snippet
