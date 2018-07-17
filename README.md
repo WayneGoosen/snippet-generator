@@ -35,6 +35,24 @@ The 'Advanced Configuration' allows input for Key, Description, Prefix, Line End
 
 Please see the [Visual Studio Documentation - Creating your own snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets)
 
+## Run the app locally (MacOS)
+
+- Clone the repo.
+- Navigate into the project.
+- Run the following commands:
+
+```Batchfile
+# Setup virtual environment (install virtualenv if you dont have it)
+virtualenv env
+source env/bin/activate
+
+# Install all requirements
+pip install -r requirements.txt
+
+# Run the app with gunicorn
+gunicorn run:app;
+```
+
 ## Contributing
 
 Please fork the branch, create a new feature branch, add your changes and push. Submit a pull request :)
