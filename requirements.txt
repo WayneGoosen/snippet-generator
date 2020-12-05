@@ -18,5 +18,5 @@ python-coveralls==2.9.1
 PyYAML==3.12
 requests==2.20.0
 six==1.11.0
-urllib3==1.22
+urllib3==1.24.2
 Werkzeug==0.15.3
